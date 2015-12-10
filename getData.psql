@@ -1,0 +1,1 @@
+\copy (select DISTINCT on (name) name, ST_AsText(ST_Transform(ST_Centroid(way),4326)) from planet_osm_line where name is not null and (highway = 'trunk' or highway = 'primary' or highway = 'secondary' or highway = 'tertiary' or highway = 'residential') order by name) to '/tmp/streets.csv' csv;
